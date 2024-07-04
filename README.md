@@ -1,4 +1,72 @@
-# Explanation of Code Refactor:
+# Explanation of the questions asked in the Email
+
+## Redux
+
+There are several way to fetch data from an API and store in a Redux store.
+
+### Traditional Method
+
+- Set Up Redux Store.
+- Define actions and reducers to handle data fetching.
+- If necessary, combine multiple reducers.
+- Wrap your app with the Redux Provider.
+- Create a component that fetches data and displays it.
+- Render your data-fetching component within your main app component.
+
+### Using Context API
+
+> **A working demo of this is within this project.**
+
+- Create a state / store as i have done is `src/context/state.ts`
+- Define actions such as:
+
+```typescript
+enum actions {
+  setPeople = "SET_PEOPLE",
+  setPerson = "SET_PERSON"
+}
+```
+
+- Define the reducer, as i have done in the same file `src/context/state.ts` 
+- Setup a `useData()` hook to as i have done in `src/context/useData.ts`
+- Setup a context using `createContext<any>(null);`
+- Setup a prodiver to pass the context on to the children
+- Wrap your app with the Redux Provider.
+```javascript
+export default function App({ Component, pageProps }) {
+  return (
+    <DataProvider>
+      <Component {...pageProps} />
+    </DataProvider>
+  )
+}
+```
+- Fetch dats using the `useEffects` and dispatch to the result to the store like so
+
+```javascript
+ useEffect(() => {
+    const getData = async () => {
+      const res = await fetch('https://swapi.dev/api/people')
+
+      if (!res.ok) {
+        throw new Error('Failed to fetch data')
+      }
+    
+      const data = await res.json()
+      dispatch({ type: actions.setPeople, data: data.results })
+    };
+
+    getData()
+  }, [dispatch]);
+```
+
+- Consume the data from the store in any of the children components using
+```javascript
+const { state, dispatch } = useData();
+```
+
+## Explanation of Code Refactor:
+
 1. **Mapping volume unit to element IDs**: The volume unit to element ID mapping is stored in the `volumeUnitElements` object for cleaner and more maintainable code. Also it has a constant look up time since we are using a key value store.
 2. **Element selection**: We use the mapped value from `volumeUnitElements` to select the element.
 3. **Check element existence**: Instead of checking if the element exists by comparing it to `null`, we check if the element selection returned a jQuery object with a length greater than 0. Here im assuming the `$` is for jQuery.
