@@ -1,4 +1,4 @@
-# Explanation:
+# Explanation of Code Refactor:
 1. **Mapping volume unit to element IDs**: The volume unit to element ID mapping is stored in the `volumeUnitElements` object for cleaner and more maintainable code. Also it has a constant look up time since we are using a key value store.
 2. **Element selection**: We use the mapped value from `volumeUnitElements` to select the element.
 3. **Check element existence**: Instead of checking if the element exists by comparing it to `null`, we check if the element selection returned a jQuery object with a length greater than 0. Here im assuming the `$` is for jQuery.
