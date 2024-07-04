@@ -9,3 +9,8 @@
   display: table;
   clear: both;
 }
+
+.header, .subheader {
+  text-align: center;
+  text-transform: capitalize;
+}

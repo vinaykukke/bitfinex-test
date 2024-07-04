@@ -23,9 +23,13 @@ const StarWars = () => {
   }, [dispatch]);
 
   return (
-    <div className={styles.row}>
-      {state.people.map((person, i) => <Cards name={person.name} key={i} />)}
-    </div>
+    <>
+      <h1 className={styles.header}>List of characters</h1>
+      <h3 className={styles.subheader}>Choose one to see the details</h3>
+      <div className={styles.row}>
+        {state.people.map((person, i) => <Cards name={person.name} key={i} id={i+1} />)}
+      </div>
+    </>
   )
 }
 

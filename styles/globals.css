@@ -24,3 +24,27 @@ a {
     background: black;
   }
 }
+
+.person {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.person .person-header {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.person .details {
+  height: 60px;
+  width: 300px;
+  text-align: center;
+  margin-top: 5px;
+  background-color: #373737;
+  padding: 20px;
+}

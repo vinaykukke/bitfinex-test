@@ -5,12 +5,24 @@ enum actions {
 
 export interface IInitialState {
   people: any[];
-  person: any
+  person: {
+    name: string;
+    birth_year: string;
+    gender: string;
+    eye_color: string;
+    mass: string;
+  }
 }
 
 const initialState: IInitialState = {
   people: [],
-  person: null
+  person: {
+    name: "",
+    birth_year: "",
+    gender: "",
+    eye_color: "",
+    mass: ""
+  }
 };
 
 const reducer = (state: any, action: any) => {
