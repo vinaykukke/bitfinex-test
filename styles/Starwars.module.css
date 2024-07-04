@@ -1,9 +1,14 @@
-/* Remove extra left and right margins, due to padding in columns */
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .row {
   margin: 0 -5px;
 }
 
-/* Clear floats after the columns */
 .row:after {
   content: "";
   display: table;
@@ -13,4 +18,31 @@
 .header, .subheader {
   text-align: center;
   text-transform: capitalize;
+}
+
+.button {
+  background-color: #04AA6D;
+  /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  margin-top: 25px;
+}
+
+.button1 {
+  background-color: white;
+  color: black;
+  border: 2px solid #04AA6D;
+}
+
+.button1:hover {
+  background-color: #04AA6D;
+  color: white;
 }
