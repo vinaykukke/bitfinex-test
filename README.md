@@ -10,7 +10,28 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Please note
+
+Here i am using [SWAPI](https://swapi.dev/) a star wars API to fetch all the data. The code can be found in `pages/star-wars.tsx`
+
 # Explanation of the questions asked in the Email
+
+## Generate URL
+
+This placed as a button at `http://localhost:3000/star-wars`.
+The generated URL will be displayed in an alert in the browser. The code can be found in `pages/star-wars.tsx`
+
+```javascript
+function generateUrl(params: IParms) {
+    const baseUrl = "http://testurl.bitfinx.com/";
+    const queryString = Object.entries(params)
+        .filter(([key, value]) => value !== '')  // Filter out empty parameters
+        .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value)}`)  // Encode key and value
+        .join('&');  // Join them with '&'
+
+    return `${baseUrl}?${queryString}`;
+  }
+```
 
 ## Redux
 
